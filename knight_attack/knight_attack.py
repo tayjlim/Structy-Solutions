@@ -2,21 +2,23 @@
 from collections import deque
 ​
 def knight_attack(n, kr, kc, pr, pc):
-    visited = set([(kr, kc)])  # Make sure we don't backtrack
-    queue = deque([(kr, kc, 0)])  # row, col, steps
-​
-    while queue:
-        r, c, steps = queue.popleft()
-        if (r, c) == (pr, pc):
-            return steps
-        
-        for move in nextMoves(n, r, c):
-            if move not in visited:
-                visited.add(move)
-                x, y = move
-                queue.append((x, y, steps + 1))
-​
-    return None
+  visited = set() # make sure we dont back track 
+  visited.add((kr,kc))
+  queue = deque([(kr, kc, 0)])  # Correctly initialize the deque here
+  while len(queue) > 0:
+    # CURRENT 
+    r,c,steps = queue.popleft();
+    if (r,c) == (pr,pc):
+      return steps
+    
+    moves = nextMoves(n,r,c)
+    for move in moves:
+      x,y = move
+      
+      if move not in visited:
+        visited.add(move)
+        queue.append((x,y,steps+1))
+  return None
 ​
   # deconstruct this because we are only x,y 
     
@@ -45,5 +47,4 @@ def nextMoves (n,r,c):
 #2 left 
 # 2 right
 #2up
-#2 down
 # n is tize of graph
