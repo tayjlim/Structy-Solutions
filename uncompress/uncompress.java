@@ -7,9 +7,11 @@ class Source {
     while (j < s.length()) {
       if (numbers.contains(String.valueOf(s.charAt(j)))) {//if we hit we add to j
         j += 1;
+        System.out.println(j);
       } else {// if we hit a char
         int num = Integer.parseInt(s.substring(i, j));
-        System.out.print(num);
+        System.out.println(num);
+        
         for (int count = 0; count < num; count += 1) {
           result += s.charAt(j);
         }
@@ -23,5 +25,6 @@ class Source {
   public static void run() {
     // this function behaves as `main()` for the 'run' command
     // you may sandbox in this function, but should not remove it
+    Source.uncompress("2c3a1t"); // -> "ccaaat"
   }
 }  
